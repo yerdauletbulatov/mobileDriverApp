@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MobileDriverApp.ViewModels.Main"
+             x:DataType="viewModel:KitViewModel"
+             x:Class="MobileDriverApp.Views.Main.KitPage">
+    <VerticalStackLayout
+            VerticalOptions="Center" 
+            HorizontalOptions="Center">
+        <Label 
+            Text="Тарифы"
+            FontSize="20"/>
+
+        <HorizontalStackLayout
+                         VerticalOptions="Center" 
+                         HorizontalOptions="Center">
+
+            <StackLayout Orientation="Horizontal" Padding="20" >
+                <Picker SelectedItem="{Binding Kit}" FontSize="16" Title="Select Kit" ItemsSource="{Binding KitList}" 
+                    ItemDisplayBinding="{Binding Name}"/>
+            </StackLayout>
+
+
+        </HorizontalStackLayout>
+
+        <Button Text="Подтвердить" HorizontalOptions="Center" Command="{Binding BuyKitCommand}"/>
+        
+    </VerticalStackLayout>
+</ContentPage>

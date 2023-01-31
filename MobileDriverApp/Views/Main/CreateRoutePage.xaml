@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:MobileDriverApp.ViewModels.Main"
+             x:DataType="viewModel:CreateRouteTripViewModel"
+             x:Class="MobileDriverApp.Views.Main.CreateRoutePage"
+             Title="Создать поездку">
+    
+    <VerticalStackLayout>
+        <Label 
+            FontSize="20"
+            Text="Создать поездку"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <HorizontalStackLayout 
+                         VerticalOptions="Center" 
+                         HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" Padding="20" >
+                <Picker SelectedItem="{Binding StartCity}" FontSize="16" Title="Город отправки" ItemsSource="{Binding CityList}" 
+                    ItemDisplayBinding="{Binding Name}"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="20" >
+                <Picker SelectedItem="{Binding FinishCity}" FontSize="16" Title="Город прибытия" ItemsSource="{Binding CityList}" 
+                    ItemDisplayBinding="{Binding Name}"/>
+
+            </StackLayout>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout
+                         VerticalOptions="Center" 
+                         HorizontalOptions="Center">
+            <DatePicker MinimumDate="{Binding DeliveryDate}"
+                        Format="dd/MM/yyyy"
+            Date="{Binding DeliveryDate}" />
+        </HorizontalStackLayout>
+
+        <Button Text="Подтвердить" HorizontalOptions="Center" Command="{Binding CreateRouteTripCommand}"/>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"/>
+    </VerticalStackLayout>
+</ContentPage>
